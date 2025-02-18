@@ -78,5 +78,23 @@ app.post('/messages/save', async (req, res) => {
   }
 })
 
+app.get('/about-us', (req, res) => {
+  try {
+    const content = "Hi, my name is Tahsin Tawhid, and I’m a Computer Science student at New York University. I have experience in full-stack development, AI integration, and software quality assurance, with internships at RateGame and Oigetit. At RateGame, I’ve developed mobile app features using React Native, Node.js, and Firebase, optimizing real-time data processing and user authentication. Beyond tech, I enjoy writing poetry and essays, exploring fragrances, and following every sport that's out there. I’m always eager to expand my skills and take on new challenges in software engineering. Thank you for your time!"
+    const url = "/logo.PNG"
+    res.json({
+      content: content,
+      url: url
+    })
+  }
+  catch (err) {
+    console.error(err)
+    res.status(400).json({
+      error: err,
+      status: 'failed to retrieve page content and url from server',
+    })
+  }
+})
+
 // export the express app we created to make it available to other modules
 module.exports = app // CommonJS export style!
